@@ -1,6 +1,6 @@
 0x02. PYTHON - IMPORT & MODULES
 
-This directory contains for python project file on Import and Modules
+This directory contains python project file on Import and Modules
 
 
 0- Write a program that imports the function def add(a, b): from a file  and prints the result of the addition 1 + 2 = 3
