@@ -1,86 +1,41 @@
 #include "lists.h"
 
 /**
- * is_palindrome - chexk if a list is palindrome
- * Description:
- * The approach uses the fact that a list
- * - is palindrom if:
- *   its first half is thesame as the reverse
- *   of its last half
- * - else its not a palindrom
- * The middle element is found using the
- * tortoise hare algorithm
- * In the case where the list has odd length
- * the middle element is disregarded
- *
- * @list: pointer to list
- * Return: 1 if true 0 otherwise
+ * is_palindrome - determine if singly linked list is palindrome
+ * @head: pointer to head of singly linked list
+ * Return: 0 if not, 1 if palindrome
  */
-
-int is_palindrome(listint_t **list)
+int is_palindrome(listint_t **head)
 {
-	int result = 1;
-	listint_t *fast, *slow, *h1, *h2, *tmp;
+	listint_t *tmp = *head;
+	unsigned int size = 0, i = 0;
+	int data[10240];
 
-	if (!list)
+	if (head == NULL) /* non-existing list is not */
 		return (0);
 
-	/* if list length is less than 2 */
-	if (!(*list) || !((*list)->next))
+	if (*head == NULL) /* empty list is palindrome */
 		return (1);
 
-	/* find the middle node */
-	slow = fast = *list;
-	while (fast && fast->next)
+	while (tmp) /* find size of linked list */
 	{
-		slow = slow->next;
-		fast = fast->next->next;
+		tmp = tmp->next;
+		size += 1;
 	}
-	if (fast)
-		slow = slow->next;
+	if (size == 1) /* single node list is palindrome */
+		return (1);
 
-	/* reverse the last half */
-	h2 = reverse_listint(&slow);
-	tmp = h2;
-
-	/* compare the two halves */
-	h1 = *list;
-	while (h2)
+	tmp = *head;
+	while (tmp) /* pull node data into array to compare */
 	{
-		if (h2->n != h1->n)
-		{
-			result = 0;
-			break;
-		}
-		h1 = h1->next;
-		h2 = h2->next;
+		data[i++] = tmp->n;
+		tmp = tmp->next;
 	}
 
-	/* rever the half back to original */
-	reverse_listint(&tmp);
-	return (result);
-}
-
-/**
- * reverse_listint - reverses a linked list
- * @h: head of the list
- *
- * Return: pointer to the reversed
- */
-listint_t *reverse_listint(listint_t **h)
-{
-	listint_t *tmp2, *tmp1;
-
-	if (!h || !(*h))
-		return (NULL);
-	tmp1 = (*h)->next;
-	(*h)->next = NULL;
-	while (tmp1)
+	for (i = 0; i <= (size/2); i++)
 	{
-		tmp2 = *h;
-		*h = tmp1;
-		tmp1 = (*h)->next;
-		(*h)->next = tmp2;
+		if (data[i] != data[size - i - 1])
+			return (0);
 	}
-	return (*h);
+	return (1);
 }
