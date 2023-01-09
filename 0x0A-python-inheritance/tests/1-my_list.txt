@@ -1,6 +1,4 @@
-The ``1-my_list`` module
-
-Using ``MyList``
+Tests for task 1
 
 >>> MyList = __import__("1-my_list").MyList
 >>> test_list = MyList([1, 2, 5, 4])
