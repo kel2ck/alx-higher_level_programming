@@ -1,7 +1,6 @@
 #!/usr/bin/python3
 """
-From json string  to object
-
+contain the JSON string
 """
 
 import json
