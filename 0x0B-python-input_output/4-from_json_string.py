@@ -1,11 +1,8 @@
 #!/usr/bin/python3
-"""
-contain the JSON string
-"""
-
+"""From json string  to object"""
 import json
 
 
-def to_json_string(my_obj):
-    """returns the JSON representation of an object (string)"""
-    return json.dumps(my_obj)
+def from_json_string(my_str):
+    """Converts a Json string to a python object (deseralizing)"""
+    return json.loads(my_str)
