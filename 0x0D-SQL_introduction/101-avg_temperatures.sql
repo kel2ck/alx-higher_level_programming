@@ -1,7 +1,7 @@
--- Temperature average
+-- displays teh average temp by city
+-- ordered by temperature desc
 
-IMPORT TABLE temperatures
-SELECT city, AVG(value) AS 'avg_temp'
-FROM temperature
+SELECT city, AVG(value) as avg_temp
+FROM temperatures
 GROUP BY city
-ORDER BY value DESC;
+ORDER BY avg_temp DESC;
