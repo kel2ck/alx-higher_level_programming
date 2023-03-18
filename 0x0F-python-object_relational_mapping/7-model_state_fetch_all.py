@@ -22,4 +22,3 @@ if __name__ == '__main__':
         result = session.query(State).all()
         for res in result:
             print('{}: {}'.format(res.id, res.name))
-
