@@ -1,3 +1,3 @@
 #!/bin/bash
-# makes a request causing the server respond with "You got me"
-curl -sL -H "Origin: School" -X PUT "0.0.0.0:5000/catch_me"
+# Follows a URL for it to respond with "You got me!"
+curl -s -X PUT -H 'Origin: HolbertonSchool' -L --max-redirs -1 -d "user_id=98" "0.0.0.0:5000/catch_me"
