@@ -1,13 +1,10 @@
 #!/usr/bin/python3
-"""Fetches a URL."""
-import urllib.request as request
-
-
+"""A script that fetches a url"""
+from urllib.request import urlopen
 if __name__ == "__main__":
-    with request.urlopen("https://intranet.hbtn.io/status") as response:
-        if response.readable():
-            data = response.read()
-            print("Body response:")
-            print("\t- type: {}".format(type(data)))
-            print("\t- content: {}".format(data))
-            print("\t- utf8 content: {}".format(data.decode("utf-8")))
+    with urlopen("https://alx-intranet.hbtn.io/status") as response:
+        body = response.read()
+        print("Body response:")
+        print(f"\t- type: {type(body)}")
+        print(f"\t- content: {body}")
+        print(f"\t- utf8 content: {body.decode('utf-8')}")
