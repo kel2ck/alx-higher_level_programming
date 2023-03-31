@@ -1,10 +1,9 @@
 #!/usr/bin/python3
-"""Fetches a URL."""
+"""Fetches a URL with the Request module"""
 import requests
 
-
-if __name__ == '__main__':
-    response = requests.get('https://intranet.hbtn.io/status')
-    print('Body response:')
-    print('\t- type: {}'.format(type(response.text)))
-    print('\t- content: {}'.format(response.text))
+if __name__ == "__main__":
+    r = requests.get('https://alx-intranet.hbtn.io/status')
+    print("Body response:")
+    print(f"\t- type: {type(r.text)}")
+    print(f"\t- content: {r.text}")
